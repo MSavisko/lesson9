@@ -105,6 +105,9 @@
 		5CAFEB1A1C2BDAA50043364F /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				KnownAssetTags = (
+					firstSquare,
+				);
 				LastUpgradeCheck = 0720;
 				ORGANIZATIONNAME = geekub;
 				TargetAttributes = {
