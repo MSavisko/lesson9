@@ -7,9 +7,12 @@
 
 #import <UIKit/UIKit.h>
 #import "MCHelpGestureRecognizer.h"
+#import "CircleGestureRecognizer.h"
+
 @interface MCViewController : UIViewController <UIGestureRecognizerDelegate>
 {
     MCHelpGestureRecognizer *helpRecognizer;
+    CircleGestureRecognizer *circleRecognizer;
     IBOutlet UILabel *detectionLabel;
 }
 @end
