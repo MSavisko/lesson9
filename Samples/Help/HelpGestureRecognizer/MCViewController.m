@@ -16,13 +16,14 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+
 	helpRecognizer = [[MCHelpGestureRecognizer alloc] initWithTarget:self
                                                               action:@selector(showHelp)];
     [helpRecognizer setDelegate:self];
     [self.view addGestureRecognizer:helpRecognizer];
     
     [detectionLabel setAlpha:0.0f];
-    
+
     circleRecognizer = [[CircleGestureRecognizer alloc] initWithTarget:self
                                                               action:@selector(showCircle)];
     [circleRecognizer setDelegate:self];
