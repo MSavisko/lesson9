@@ -9,6 +9,10 @@
 #import "ViewController.h"
 
 @interface ViewController ()
+@property (weak, nonatomic) IBOutlet UIView *firstSquare;
+@property (weak, nonatomic) IBOutlet UIView *secondSquare;
+@property (weak, nonatomic) IBOutlet UIView *thirdSquare;
+@property (weak, nonatomic) IBOutlet UIView *fourthSquare;
 
 @end
 
