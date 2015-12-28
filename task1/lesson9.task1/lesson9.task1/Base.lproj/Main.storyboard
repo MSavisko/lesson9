@@ -113,11 +113,6 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
-                <tapGestureRecognizer id="Er3-Ai-jzd">
-                    <connections>
-                        <action selector="firstGesture:" destination="BYZ-38-t0r" id="x1E-we-ifc"/>
-                    </connections>
-                </tapGestureRecognizer>
                 <tapGestureRecognizer numberOfTapsRequired="2" id="1bT-jO-7tX">
                     <connections>
                         <action selector="secondGesture:" destination="BYZ-38-t0r" id="Ivq-kv-Kgp"/>
@@ -133,6 +128,11 @@
                         <action selector="fourthGesture:" destination="BYZ-38-t0r" id="vUG-87-wIg"/>
                     </connections>
                 </swipeGestureRecognizer>
+                <tapGestureRecognizer id="Er3-Ai-jzd">
+                    <connections>
+                        <action selector="firstGesture:" destination="BYZ-38-t0r" id="x1E-we-ifc"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="305" y="349"/>
         </scene>
