@@ -21,7 +21,16 @@
 @property (weak, nonatomic) IBOutlet UIButton *startButton;
 
 //Timer
-@property (nonatomic) NSTimer* myTimer;
+@property (nonatomic) NSTimer *myTimer;
+
+//Current speed of square
+@property (nonatomic) NSInteger firstSquareSpeed;
+@property (nonatomic) NSInteger secondSquareSpeed;
+@property (nonatomic) NSInteger thirdSquareSpeed;
+@property (nonatomic) NSInteger fourthSquareSpeed;
+
+//Timer Count
+@property (nonatomic) NSInteger timerCount;
 
 //Gesture
 - (IBAction)firstGesture:(UITapGestureRecognizer *)sender;
@@ -33,6 +42,12 @@
 @end
 
 @implementation ViewController
+
+static NSInteger TIMERFORCHANGESPEED = 150;
+static NSInteger increaseFirstSquareSpeed = 5;
+static NSInteger increaseSecondSquareSpeed = 4;
+static NSInteger increaseThirdSquareSpeed = 3.2;
+static NSInteger increaseFourthSquareSpeed = 2.56;
 
 - (void)viewDidLoad {
 	[super viewDidLoad];
@@ -56,7 +71,11 @@
                                                        repeats:YES];
         [[NSRunLoop currentRunLoop] addTimer:self.myTimer forMode:NSRunLoopCommonModes];
         [self.startButton setTitle:@"Stop!" forState:UIControlStateNormal];
-        
+        self.timerCount = 1;
+        self.firstSquareSpeed = increaseFirstSquareSpeed;
+        self.secondSquareSpeed = increaseSecondSquareSpeed;
+        self.thirdSquareSpeed = increaseThirdSquareSpeed;
+        self.fourthSquareSpeed = increaseFourthSquareSpeed;
     }
     
     if ([self.startButton.titleLabel.text isEqual:@"Stop!"]) {
@@ -87,17 +106,32 @@
 }
 
 - (void) moveSquares {
-    int firstSquareSpeed = 5;
-    self.firstSquare.frame = CGRectMake(self.firstSquare.frame.origin.x, self.firstSquare.frame.origin.y + firstSquareSpeed, self.firstSquare.frame.size.width, self.firstSquare.frame.size.height);
-    self.secondSquare.frame = CGRectMake(self.secondSquare.frame.origin.x, self.secondSquare.frame.origin.y + 4, self.secondSquare.frame.size.width, self.secondSquare.frame.size.height);
-    self.thirdSquare.frame = CGRectMake(self.thirdSquare.frame.origin.x, self.thirdSquare.frame.origin.y + 3.2, self.thirdSquare.frame.size.width, self.thirdSquare.frame.size.height);
-    self.fourthSquare.frame = CGRectMake(self.fourthSquare.frame.origin.x, self.fourthSquare.frame.origin.y + 2.56, self.fourthSquare.frame.size.width, self.fourthSquare.frame.size.height);
+    self.timerCount++;
+    self.firstSquare.frame = CGRectMake(self.firstSquare.frame.origin.x, self.firstSquare.frame.origin.y + self.firstSquareSpeed, self.firstSquare.frame.size.width, self.firstSquare.frame.size.height);
+    self.secondSquare.frame = CGRectMake(self.secondSquare.frame.origin.x, self.secondSquare.frame.origin.y + self.secondSquareSpeed, self.secondSquare.frame.size.width, self.secondSquare.frame.size.height);
+    self.thirdSquare.frame = CGRectMake(self.thirdSquare.frame.origin.x, self.thirdSquare.frame.origin.y + self.thirdSquareSpeed, self.thirdSquare.frame.size.width, self.thirdSquare.frame.size.height);
+    self.fourthSquare.frame = CGRectMake(self.fourthSquare.frame.origin.x, self.fourthSquare.frame.origin.y + self.fourthSquareSpeed, self.fourthSquare.frame.size.width, self.fourthSquare.frame.size.height);
     [self checkForGameOver];
+    [self increaseSpeed];
 }
+
+
+//Increase Speed
+- (void) increaseSpeed {
+    if (self.timerCount % TIMERFORCHANGESPEED == 0) {
+        self.firstSquareSpeed = self.firstSquareSpeed + increaseFirstSquareSpeed;
+        self.secondSquareSpeed = self.secondSquareSpeed + increaseSecondSquareSpeed;
+        self.thirdSquareSpeed = self.thirdSquareSpeed + increaseThirdSquareSpeed;
+        self.fourthSquareSpeed = self.fourthSquareSpeed + increaseFourthSquareSpeed;
+        NSLog(@"====== Speed increased =======");
+    }
+}
+
 
 //Gesture
 - (IBAction)firstGesture:(UITapGestureRecognizer *)sender {
         self.firstSquare.frame = CGRectMake(self.firstSquare.frame.origin.x, 15, self.firstSquare.frame.size.width, self.firstSquare.frame.size.height);
+    NSLog(@"Timer Count is %d", self.timerCount);
 }
 
 - (IBAction)secondGesture:(UITapGestureRecognizer *)sender {
