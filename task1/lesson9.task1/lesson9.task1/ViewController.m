@@ -20,6 +20,9 @@
 - (IBAction)startButton:(id)sender;
 @property (weak, nonatomic) IBOutlet UIButton *startButton;
 
+//Score
+@property (weak, nonatomic) IBOutlet UILabel *scoreLabel;
+
 //Timer
 @property (nonatomic) NSTimer *myTimer;
 
@@ -48,10 +51,16 @@ static NSInteger increaseFirstSquareSpeed = 5;
 static NSInteger increaseSecondSquareSpeed = 4;
 static NSInteger increaseThirdSquareSpeed = 3.2;
 static NSInteger increaseFourthSquareSpeed = 2.56;
+static NSInteger finishLine = 160;
 
 - (void)viewDidLoad {
 	[super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    self.scoreLabel.hidden = YES;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -59,11 +68,9 @@ static NSInteger increaseFourthSquareSpeed = 2.56;
 	// Dispose of any resources that can be recreated.
 }
 
-
 - (IBAction)startButton:(id)sender {
     if ([self.startButton.titleLabel.text isEqual:@"Start!"]) {
         NSLog(@"Button title is Start!");
-        //Do some stuff
         self.myTimer = [NSTimer scheduledTimerWithTimeInterval:0.1
                                                         target:self
                                                       selector:@selector(moveSquares)
@@ -71,40 +78,61 @@ static NSInteger increaseFourthSquareSpeed = 2.56;
                                                        repeats:YES];
         [[NSRunLoop currentRunLoop] addTimer:self.myTimer forMode:NSRunLoopCommonModes];
         [self.startButton setTitle:@"Stop!" forState:UIControlStateNormal];
-        self.timerCount = 1;
-        self.firstSquareSpeed = increaseFirstSquareSpeed;
-        self.secondSquareSpeed = increaseSecondSquareSpeed;
-        self.thirdSquareSpeed = increaseThirdSquareSpeed;
-        self.fourthSquareSpeed = increaseFourthSquareSpeed;
+        [self initStartParam];
     }
     
     if ([self.startButton.titleLabel.text isEqual:@"Stop!"]) {
         NSLog(@"Button title is Stop!");
         self.startButton.hidden = YES;
         [self.myTimer invalidate];
+        [self showScore];
     }
     
 }
 
+- (void) initStartParam {
+    self.timerCount = 1;
+    self.firstSquareSpeed = increaseFirstSquareSpeed;
+    self.secondSquareSpeed = increaseSecondSquareSpeed;
+    self.thirdSquareSpeed = increaseThirdSquareSpeed;
+    self.fourthSquareSpeed = increaseFourthSquareSpeed;
+}
+
+//Check for game finish
 - (void) checkForGameOver {
-    if (self.firstSquare.frame.origin.y >= self.view.frame.size.height - 160) {
+    if (self.firstSquare.frame.origin.y >= self.view.frame.size.height - finishLine) {
         NSLog(@"Square #1 finished");
         [self.myTimer invalidate];
+        self.startButton.hidden = YES;
+        [self showScore];
     }
-    if (self.secondSquare.frame.origin.y >= self.view.frame.size.height - 160) {
+    if (self.secondSquare.frame.origin.y >= self.view.frame.size.height - finishLine) {
         NSLog(@"Square #2 finished");
         [self.myTimer invalidate];
+        self.startButton.hidden = YES;
+        [self showScore];
     }
-    if (self.thirdSquare.frame.origin.y >= self.view.frame.size.height - 160) {
+    if (self.thirdSquare.frame.origin.y >= self.view.frame.size.height - finishLine) {
         NSLog(@"Square #3 finished");
         [self.myTimer invalidate];
+        self.startButton.hidden = YES;
+        [self showScore];
     }
-    if (self.fourthSquare.frame.origin.y >= self.view.frame.size.height - 160) {
+    if (self.fourthSquare.frame.origin.y >= self.view.frame.size.height - finishLine) {
         NSLog(@"Square #3 finished");
         [self.myTimer invalidate];
+        self.startButton.hidden = YES;
+       [self showScore];
     }
 }
 
+- (void) showScore {
+    NSString * stringTimer = [NSString stringWithFormat:@"Score: %d sec", self.timerCount/10];
+    self.scoreLabel.text = stringTimer;
+    self.scoreLabel.hidden = NO;
+}
+
+//Moved Square
 - (void) moveSquares {
     self.timerCount++;
     self.firstSquare.frame = CGRectMake(self.firstSquare.frame.origin.x, self.firstSquare.frame.origin.y + self.firstSquareSpeed, self.firstSquare.frame.size.width, self.firstSquare.frame.size.height);
@@ -130,20 +158,20 @@ static NSInteger increaseFourthSquareSpeed = 2.56;
 
 //Gesture
 - (IBAction)firstGesture:(UITapGestureRecognizer *)sender {
-        self.firstSquare.frame = CGRectMake(self.firstSquare.frame.origin.x, 15, self.firstSquare.frame.size.width, self.firstSquare.frame.size.height);
+        self.firstSquare.frame = CGRectMake(self.firstSquare.frame.origin.x, 35, self.firstSquare.frame.size.width, self.firstSquare.frame.size.height);
     NSLog(@"Timer Count is %d", self.timerCount);
 }
 
 - (IBAction)secondGesture:(UITapGestureRecognizer *)sender {
-    self.secondSquare.frame = CGRectMake(self.secondSquare.frame.origin.x, 15, self.secondSquare.frame.size.width, self.secondSquare.frame.size.height);
+    self.secondSquare.frame = CGRectMake(self.secondSquare.frame.origin.x, 35, self.secondSquare.frame.size.width, self.secondSquare.frame.size.height);
 }
 
 - (IBAction)thirdGesture:(UISwipeGestureRecognizer *)sender {
-    self.thirdSquare.frame = CGRectMake(self.thirdSquare.frame.origin.x, 15, self.thirdSquare.frame.size.width, self.thirdSquare.frame.size.height);
+    self.thirdSquare.frame = CGRectMake(self.thirdSquare.frame.origin.x, 35, self.thirdSquare.frame.size.width, self.thirdSquare.frame.size.height);
 }
 
 - (IBAction)fourthGesture:(UISwipeGestureRecognizer *)sender {
-    self.fourthSquare.frame = CGRectMake(self.fourthSquare.frame.origin.x, 15, self.fourthSquare.frame.size.width, self.fourthSquare.frame.size.height);
+    self.fourthSquare.frame = CGRectMake(self.fourthSquare.frame.origin.x, 35, self.fourthSquare.frame.size.width, self.fourthSquare.frame.size.height);
 }
 
 
