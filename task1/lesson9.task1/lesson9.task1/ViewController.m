@@ -19,6 +19,8 @@
 //Button
 - (IBAction)startButton:(id)sender;
 @property (weak, nonatomic) IBOutlet UIButton *startButton;
+- (IBAction)resetButton:(id)sender;
+@property (weak, nonatomic) IBOutlet UIButton *resetButton;
 
 //Score
 @property (weak, nonatomic) IBOutlet UILabel *scoreLabel;
@@ -61,6 +63,7 @@ static NSInteger finishLine = 160;
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     self.scoreLabel.hidden = YES;
+    self.resetButton.hidden = YES;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -84,14 +87,16 @@ static NSInteger finishLine = 160;
     if ([self.startButton.titleLabel.text isEqual:@"Stop!"]) {
         NSLog(@"Button title is Stop!");
         self.startButton.hidden = YES;
+        self.resetButton.hidden = NO;
         [self.myTimer invalidate];
         [self showScore];
+        self.myTimer = nil;
     }
     
 }
 
 - (void) initStartParam {
-    self.timerCount = 1;
+    self.timerCount = 0;
     self.firstSquareSpeed = increaseFirstSquareSpeed;
     self.secondSquareSpeed = increaseSecondSquareSpeed;
     self.thirdSquareSpeed = increaseThirdSquareSpeed;
@@ -103,26 +108,38 @@ static NSInteger finishLine = 160;
     if (self.firstSquare.frame.origin.y >= self.view.frame.size.height - finishLine) {
         NSLog(@"Square #1 finished");
         [self.myTimer invalidate];
+        [self.startButton setTitle:@"Start!" forState:UIControlStateNormal];
         self.startButton.hidden = YES;
+        self.resetButton.hidden = NO;
         [self showScore];
+        self.myTimer = nil;
     }
     if (self.secondSquare.frame.origin.y >= self.view.frame.size.height - finishLine) {
         NSLog(@"Square #2 finished");
         [self.myTimer invalidate];
+        [self.startButton setTitle:@"Start!" forState:UIControlStateNormal];
         self.startButton.hidden = YES;
+        self.resetButton.hidden = NO;
         [self showScore];
+        self.myTimer = nil;
     }
     if (self.thirdSquare.frame.origin.y >= self.view.frame.size.height - finishLine) {
         NSLog(@"Square #3 finished");
         [self.myTimer invalidate];
+        [self.startButton setTitle:@"Start!" forState:UIControlStateNormal];
         self.startButton.hidden = YES;
+        self.resetButton.hidden = NO;
         [self showScore];
+        self.myTimer = nil;
     }
     if (self.fourthSquare.frame.origin.y >= self.view.frame.size.height - finishLine) {
         NSLog(@"Square #3 finished");
         [self.myTimer invalidate];
+        [self.startButton setTitle:@"Start!" forState:UIControlStateNormal];
         self.startButton.hidden = YES;
-       [self showScore];
+        self.resetButton.hidden = NO;
+        [self showScore];
+        self.myTimer = nil;
     }
 }
 
@@ -155,6 +172,15 @@ static NSInteger finishLine = 160;
     }
 }
 
+- (void) reset {
+    [self initStartParam];
+    self.scoreLabel.text = nil;
+    self.scoreLabel.hidden = YES;
+    self.resetButton.hidden = YES;
+    self.startButton.hidden = NO;
+    [self.startButton setTitle:@"Start!" forState:UIControlStateNormal];
+    
+}
 
 //Gesture
 - (IBAction)firstGesture:(UITapGestureRecognizer *)sender {
@@ -175,4 +201,7 @@ static NSInteger finishLine = 160;
 }
 
 
+- (IBAction)resetButton:(id)sender {
+    [self reset];
+}
 @end
