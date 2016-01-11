@@ -36,6 +36,8 @@
 
 //Timer Count
 @property (nonatomic) NSInteger timerCount;
+@property (nonatomic) NSTimeInterval timeIntervalStart;
+@property (nonatomic) NSTimeInterval timeIntervalEnd;
 
 //Gesture
 - (IBAction)firstGesture:(UITapGestureRecognizer *)sender;
@@ -82,6 +84,7 @@ static NSInteger finishLine = 160;
         [[NSRunLoop currentRunLoop] addTimer:self.myTimer forMode:NSRunLoopCommonModes];
         [self.startButton setTitle:@"Stop!" forState:UIControlStateNormal];
         [self initStartParam];
+
     }
     
     if ([self.startButton.titleLabel.text isEqual:@"Stop!"]) {
@@ -97,6 +100,7 @@ static NSInteger finishLine = 160;
 
 - (void) initStartParam {
     self.timerCount = 0;
+    self.timeIntervalStart = CFAbsoluteTimeGetCurrent();
     self.firstSquareSpeed = increaseFirstSquareSpeed;
     self.secondSquareSpeed = increaseSecondSquareSpeed;
     self.thirdSquareSpeed = increaseThirdSquareSpeed;
@@ -144,9 +148,15 @@ static NSInteger finishLine = 160;
 }
 
 - (void) showScore {
-    NSString * stringTimer = [NSString stringWithFormat:@"Score: %d sec", self.timerCount/10];
+    self.timeIntervalEnd = CFAbsoluteTimeGetCurrent();
+    //NSString * stringTimer = [NSString stringWithFormat:@"Score: %d sec", self.timerCount/10];
+    double timerResult = self.timeIntervalEnd - self.timeIntervalStart;
+    NSString * stringTimer = [NSString stringWithFormat:@"Score: %f sec", timerResult];
+    stringTimer = [stringTimer substringToIndex:[stringTimer length] - 0];
+    NSLog(@"String Timer length is: %d", [stringTimer length]);
     self.scoreLabel.text = stringTimer;
     self.scoreLabel.hidden = NO;
+    NSLog(@"Alternative time is:, %f", timerResult);
 }
 
 //Moved Square
