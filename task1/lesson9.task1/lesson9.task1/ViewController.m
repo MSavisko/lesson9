@@ -56,6 +56,7 @@ static NSInteger increaseSecondSquareSpeed = 4;
 static NSInteger increaseThirdSquareSpeed = 3.2;
 static NSInteger increaseFourthSquareSpeed = 2.56;
 static NSInteger finishLine = 160;
+static NSInteger startLine = 35;
 
 - (void)viewDidLoad {
 	[super viewDidLoad];
@@ -150,10 +151,11 @@ static NSInteger finishLine = 160;
 - (void) showScore {
     self.timeIntervalEnd = CFAbsoluteTimeGetCurrent();
     //NSString * stringTimer = [NSString stringWithFormat:@"Score: %d sec", self.timerCount/10];
-    double timerResult = self.timeIntervalEnd - self.timeIntervalStart;
-    NSString * stringTimer = [NSString stringWithFormat:@"Score: %f sec", timerResult];
-    stringTimer = [stringTimer substringToIndex:[stringTimer length] - 0];
-    NSLog(@"String Timer length is: %d", [stringTimer length]);
+    float timerResult = self.timeIntervalEnd - self.timeIntervalStart;
+    NSString * stringResult = [NSString stringWithFormat:@"%f", timerResult];
+    stringResult = [stringResult substringToIndex:4];
+    
+    NSString * stringTimer = [NSString stringWithFormat:@"Score: %@ sec", stringResult];
     self.scoreLabel.text = stringTimer;
     self.scoreLabel.hidden = NO;
     NSLog(@"Alternative time is:, %f", timerResult);
@@ -184,30 +186,32 @@ static NSInteger finishLine = 160;
 
 - (void) reset {
     [self initStartParam];
-    self.scoreLabel.text = nil;
     self.scoreLabel.hidden = YES;
+    self.scoreLabel.text = nil;
     self.resetButton.hidden = YES;
-    self.startButton.hidden = NO;
     [self.startButton setTitle:@"Start!" forState:UIControlStateNormal];
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        self.startButton.hidden = NO;
+    });
     
 }
 
 //Gesture
 - (IBAction)firstGesture:(UITapGestureRecognizer *)sender {
-        self.firstSquare.frame = CGRectMake(self.firstSquare.frame.origin.x, 35, self.firstSquare.frame.size.width, self.firstSquare.frame.size.height);
-    NSLog(@"Timer Count is %d", self.timerCount);
+        self.firstSquare.frame = CGRectMake(self.firstSquare.frame.origin.x, startLine, self.firstSquare.frame.size.width, self.firstSquare.frame.size.height);
+    NSLog(@"Timer Count is %ld", (long)self.timerCount);
 }
 
 - (IBAction)secondGesture:(UITapGestureRecognizer *)sender {
-    self.secondSquare.frame = CGRectMake(self.secondSquare.frame.origin.x, 35, self.secondSquare.frame.size.width, self.secondSquare.frame.size.height);
+    self.secondSquare.frame = CGRectMake(self.secondSquare.frame.origin.x, startLine, self.secondSquare.frame.size.width, self.secondSquare.frame.size.height);
 }
 
 - (IBAction)thirdGesture:(UISwipeGestureRecognizer *)sender {
-    self.thirdSquare.frame = CGRectMake(self.thirdSquare.frame.origin.x, 35, self.thirdSquare.frame.size.width, self.thirdSquare.frame.size.height);
+    self.thirdSquare.frame = CGRectMake(self.thirdSquare.frame.origin.x, startLine, self.thirdSquare.frame.size.width, self.thirdSquare.frame.size.height);
 }
 
 - (IBAction)fourthGesture:(UISwipeGestureRecognizer *)sender {
-    self.fourthSquare.frame = CGRectMake(self.fourthSquare.frame.origin.x, 35, self.fourthSquare.frame.size.width, self.fourthSquare.frame.size.height);
+    self.fourthSquare.frame = CGRectMake(self.fourthSquare.frame.origin.x, startLine, self.fourthSquare.frame.size.width, self.fourthSquare.frame.size.height);
 }
 
 
