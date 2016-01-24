@@ -16,7 +16,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		5CAFEB221C2BDAA50043364F /* lesson9.task1.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = lesson9.task1.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		5CAFEB221C2BDAA50043364F /* Gesture and squares.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Gesture and squares.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5CAFEB261C2BDAA50043364F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		5CAFEB281C2BDAA50043364F /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		5CAFEB291C2BDAA50043364F /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -50,7 +50,7 @@
 		5CAFEB231C2BDAA50043364F /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				5CAFEB221C2BDAA50043364F /* lesson9.task1.app */,
+				5CAFEB221C2BDAA50043364F /* Gesture and squares.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -82,9 +82,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		5CAFEB211C2BDAA50043364F /* lesson9.task1 */ = {
+		5CAFEB211C2BDAA50043364F /* Gesture and squares */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 5CAFEB391C2BDAA50043364F /* Build configuration list for PBXNativeTarget "lesson9.task1" */;
+			buildConfigurationList = 5CAFEB391C2BDAA50043364F /* Build configuration list for PBXNativeTarget "Gesture and squares" */;
 			buildPhases = (
 				5CAFEB1E1C2BDAA50043364F /* Sources */,
 				5CAFEB1F1C2BDAA50043364F /* Frameworks */,
@@ -94,9 +94,9 @@
 			);
 			dependencies = (
 			);
-			name = lesson9.task1;
+			name = "Gesture and squares";
 			productName = lesson9.task1;
-			productReference = 5CAFEB221C2BDAA50043364F /* lesson9.task1.app */;
+			productReference = 5CAFEB221C2BDAA50043364F /* Gesture and squares.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -117,7 +117,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 5CAFEB1D1C2BDAA50043364F /* Build configuration list for PBXProject "lesson9.task1" */;
+			buildConfigurationList = 5CAFEB1D1C2BDAA50043364F /* Build configuration list for PBXProject "Gesture and squares" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -130,7 +130,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				5CAFEB211C2BDAA50043364F /* lesson9.task1 */,
+				5CAFEB211C2BDAA50043364F /* Gesture and squares */,
 			);
 		};
 /* End PBXProject section */
@@ -271,7 +271,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.Maksym-Savisko.lesson9-task1";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Gesture and squares";
 				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
@@ -286,7 +286,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.Maksym-Savisko.lesson9-task1";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Gesture and squares";
 				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
@@ -294,7 +294,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		5CAFEB1D1C2BDAA50043364F /* Build configuration list for PBXProject "lesson9.task1" */ = {
+		5CAFEB1D1C2BDAA50043364F /* Build configuration list for PBXProject "Gesture and squares" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				5CAFEB371C2BDAA50043364F /* Debug */,
@@ -303,7 +303,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		5CAFEB391C2BDAA50043364F /* Build configuration list for PBXNativeTarget "lesson9.task1" */ = {
+		5CAFEB391C2BDAA50043364F /* Build configuration list for PBXNativeTarget "Gesture and squares" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				5CAFEB3A1C2BDAA50043364F /* Debug */,

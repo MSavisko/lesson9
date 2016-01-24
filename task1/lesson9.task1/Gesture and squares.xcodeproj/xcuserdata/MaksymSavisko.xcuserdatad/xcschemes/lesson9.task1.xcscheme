@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "5CAFEB211C2BDAA50043364F"
-               BuildableName = "lesson9.task1.app"
-               BlueprintName = "lesson9.task1"
-               ReferencedContainer = "container:lesson9.task1.xcodeproj">
+               BuildableName = "Gesture and squares.app"
+               BlueprintName = "Gesture and squares"
+               ReferencedContainer = "container:Gesture and squares.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -33,9 +33,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "5CAFEB211C2BDAA50043364F"
-            BuildableName = "lesson9.task1.app"
-            BlueprintName = "lesson9.task1"
-            ReferencedContainer = "container:lesson9.task1.xcodeproj">
+            BuildableName = "Gesture and squares.app"
+            BlueprintName = "Gesture and squares"
+            ReferencedContainer = "container:Gesture and squares.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -56,9 +56,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "5CAFEB211C2BDAA50043364F"
-            BuildableName = "lesson9.task1.app"
-            BlueprintName = "lesson9.task1"
-            ReferencedContainer = "container:lesson9.task1.xcodeproj">
+            BuildableName = "Gesture and squares.app"
+            BlueprintName = "Gesture and squares"
+            ReferencedContainer = "container:Gesture and squares.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -75,9 +75,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "5CAFEB211C2BDAA50043364F"
-            BuildableName = "lesson9.task1.app"
-            BlueprintName = "lesson9.task1"
-            ReferencedContainer = "container:lesson9.task1.xcodeproj">
+            BuildableName = "Gesture and squares.app"
+            BlueprintName = "Gesture and squares"
+            ReferencedContainer = "container:Gesture and squares.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
